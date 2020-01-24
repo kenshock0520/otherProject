@@ -2,7 +2,8 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var logger = require('morgan');
+//var logger = require('morgan');
+var logger = require('../modules/logger');
 
 var indexRouter = require('./routes/index');
 var sysRouter = require('./routes/sys');
@@ -14,7 +15,9 @@ console.log("env:"+app.get('env'));
 console.log("env2:"+process.env.NODE_ENV);
 
 
-app.use(logger('dev'));
+//app.use(logger('dev'));
+app.use(logger.express);
+//app.use(logger(`:method :url :response-time ms pid=${process.pid}`));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

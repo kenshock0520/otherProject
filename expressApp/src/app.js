@@ -7,13 +7,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var sysRouter = require('./routes/sys');
 
-var env = require('../config/environment/index');
-var envValue = env.API_ORIGIN();
+
 
 var app = express();
 console.log("env:"+app.get('env'));
 console.log("env2:"+process.env.NODE_ENV);
-console.log("env3:"+envValue);
 
 
 app.use(logger('dev'));

@@ -2,17 +2,19 @@
 const test1BL = require('../BL/test1BL');
 //const Users = require('../models/Users');
 //const Views = '../views/'
+const logger  = require('../../modules/logger');
 
 
 module.exports = {
-  checkHeader: function (req, res, next) {
+  checkHeader: async function (req, res, next) {
     const blHeader = req.header('x-sys-header');
-    console.log("blHeader:"+blHeader);
+    logger.access.info("blHeader:"+blHeader);
     if(blHeader === "test1BL"){
-        test1BL.execute(req,res,next);
+        await test1BL.execute(req,res,next);
     }else{
         //Header1不正
         res.status(400).send();
     }
+    res.status(200).send();
   }
 }

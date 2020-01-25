@@ -1,4 +1,5 @@
-const request = require('request-promise');
+//const request = require('request-promise');
+const request = require('request');
 
 const env = require('../../config/environment/index');
 const logger  = require('../../modules/logger');
@@ -16,16 +17,14 @@ const options = {
 };
 
 const get_ip_promise = (req, res, next) => {
-  request(options)
-  .then((response) => {
-    console.log('response status: ' + response.statusCode);
-    console.log('response headers content-type: ' + response.headers['content-type']);
-    res.send(response.body);
-  })
-  .catch((error) => {
-    console.log('error: ' + error.message);
-    res.status(500);
-    res.end('Internal Server Error'); // これがないとレスポンスが返らない
+  return new Promise(function (resolve, reject) {
+    request(options, function (error, res, body) {
+      if (!error && res.statusCode == 200) {
+        resolve(body);
+      } else {
+        reject(error);
+      }
+    });
   });
 };
 

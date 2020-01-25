@@ -3,12 +3,14 @@ const cooperateApi1 = require('../actions/cooperateApi1')
 const logger  = require('../../modules/logger');
 
 module.exports = {
-  execute: function (req, res,next) {
-    console.log("test1BL:req:"+req);
-    console.log("test1BL:res:"+res);
-    const resApi1 = cooperateApi1(req, res,next);
-    logger.express("api1Res:"+resApi1);
-
-    res.status(201).send();
+  execute: async function (req, res,next) {
+    logger.access.info("test1BL:req:"+req);
+    logger.access.info("test1BL:res:"+res);
+    let val = "";
+    val = await cooperateApi1(req, res,next);
+//    const resApi1 = await promise;
+    
+    logger.access.info("api1Res2:"+val);
+    res.status(201).send(val);
   }
 }

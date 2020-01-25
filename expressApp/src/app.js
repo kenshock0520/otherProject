@@ -36,7 +36,7 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
- // logger.express(res.locals.message);
+  logger.access.info(res.locals.message);
 
   // render the error page
   res.status(err.status || 500);

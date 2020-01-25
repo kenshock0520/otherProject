@@ -11,8 +11,8 @@ module.exports = {
     if(blHeader === "test1BL"){
         test1BL.execute(req,res,next);
     }else{
-        console.log("header none")
+        //Header1不正
+        res.status(400).send();
     }
-    res.status(200).send();
   }
 }

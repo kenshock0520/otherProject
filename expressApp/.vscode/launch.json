@@ -11,7 +11,13 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/bin/www"
+            "program": "${workspaceFolder}/bin/www",
+            "autoAttachChildProcesses": true,
+             "console": "internalConsole",
+            "env": {
+                "NODE_ENV": "development",
+            },
+            "protocol": "inspector"
         }
     ]
 }

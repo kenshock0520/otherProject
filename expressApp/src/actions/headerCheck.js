@@ -15,6 +15,6 @@ module.exports = {
         //Header1不正
         res.status(400).send();
     }
-    res.status(200).send();
+    //res.status(200).send();
   }
 }

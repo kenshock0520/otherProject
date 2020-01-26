@@ -8,17 +8,22 @@ module.exports = {
     logger.access.info("test1BL:req:"+req);
     logger.access.info("test1BL:res:"+res);
     let val = "";
+    let val2 = "";
     try{
 
       val = await cooperateApi1(req, res,next);
-      val = await cooperateApi2(req, res,next,val);
+      val2 = await cooperateApi2(req, res,next,val);
     }catch(err){
       logger.access.info("error");
     }
 
+    res.status(val2.statusCode).send(val2.body);
+    
+
 //    const resApi1 = await promise;
     
     logger.access.info("api1Res2:"+val);
-    res.status(202).send(val);
+    logger.access.info("api1Res2-2:"+val2);
+    
   }
 }

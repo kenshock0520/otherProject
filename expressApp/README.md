@@ -21,6 +21,7 @@ npm install babel-loader@7 -D
 
 https://qiita.com/wakusan-6126/items/c7963ba2359f60474e99
 https://expressjs.com/en/4x/api.html
+https://ky-yk-d.hatenablog.com/entry/2018/07/16/011748
 
 npm install log4js --save
 
